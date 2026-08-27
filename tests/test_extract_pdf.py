@@ -17,7 +17,7 @@ def test_help() -> None:
     assert 'Extract text from a PDF file.' in result.stdout
 
 
-def test_missing_pdf_is_rejected(tmp_path: Path) -> None:
+def test_missing_file_exits_with_error(tmp_path: Path) -> None:
     missing_pdf = tmp_path / 'missing.pdf'
     result = subprocess.run(
         [sys.executable, str(SCRIPT), str(missing_pdf)],

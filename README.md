@@ -1,5 +1,7 @@
 # PDF Text Extraction
 
+[![CI](https://github.com/AbdullahFageeh/pdf-extraction-tool/actions/workflows/quality.yml/badge.svg)](https://github.com/AbdullahFageeh/pdf-extraction-tool/actions/workflows/quality.yml)
+
 Small utility for extracting text from a PDF with PyPDF2.
 
 ## Setup
