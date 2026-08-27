@@ -19,7 +19,7 @@ jobs:
       - run: python -m pip install -e ".[dev]"
       - run: ruff check .
       - run: ruff format --check .
-      - run: python -m mypy extract_pdf.py tests/
+      - run: python -m mypy extract_pdf.py
       - run: pytest
 
   build:
