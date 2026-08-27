@@ -3,6 +3,17 @@ name = "pdf-extraction-tool"
 version = "0.1.0"
 description = "Extract text from PDF files via CLI"
 readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "Abdullah Fageeh", email = "abdulfageeh@gmail.com"},
+]
+keywords = ["pdf", "text-extraction", "cli"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing",
+]
 requires-python = ">=3.12"
 dependencies = [
     "PyPDF2>=3.0.0",
@@ -14,7 +25,20 @@ dev = [
     "ruff>=0.5.0",
     "mypy>=1.13",
     "pre-commit>=3.5.0",
+    "reportlab>=4.0.0",
+    "build>=1.0.0",
 ]
+backends = [
+    "pdfminer.six>=20221105",
+]
+
+[project.scripts]
+extract-pdf = "extract_pdf:main"
+
+[project.urls]
+Homepage = "https://github.com/AbdullahFageeh/pdf-extraction-tool"
+Repository = "https://github.com/AbdullahFageeh/pdf-extraction-tool"
+Issues = "https://github.com/AbdullahFageeh/pdf-extraction-tool/issues"
 
 [tool.ruff]
 line-length = 100
@@ -29,3 +53,4 @@ quote-style = "single"
 [tool.mypy]
 strict = true
 warn_return_any = false
+exclude = ["tests/"]

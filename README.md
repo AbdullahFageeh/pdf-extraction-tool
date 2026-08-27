@@ -1,34 +1,55 @@
 # PDF Text Extraction
 
 [![CI](https://github.com/AbdullahFageeh/pdf-extraction-tool/actions/workflows/quality.yml/badge.svg)](https://github.com/AbdullahFageeh/pdf-extraction-tool/actions/workflows/quality.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Small utility for extracting text from a PDF with PyPDF2.
+Small utility for extracting text from PDF files with multiple backend support.
 
-## Setup
+## Installation
+
+```powershell
+pip install pdf-extraction-tool
+```
+
+Or from source:
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
+pip install -e ".[dev,backends]"
 ```
 
-## Run
+## Usage
 
 ```powershell
-.\.venv\Scripts\python.exe extract_pdf.py path\to\file.pdf
+# Basic usage (uses PyPDF2 backend)
+extract-pdf path\to\file.pdf
+
+# Use pdfminer backend (requires pdfminer.six)
+extract-pdf --backend pdfminer path\to\file.pdf
+
+# Extract from encrypted PDF
+extract-pdf --password secret path\to\file.pdf
 ```
 
 The extracted text is written to the terminal. Redirect it to a file when needed:
 
 ```powershell
-.\.venv\Scripts\python.exe extract_pdf.py path\to\file.pdf > output.txt
+extract-pdf path\to\file.pdf > output.txt
 ```
+
+## Backends
+
+| Backend            | Install                    | Notes                                             |
+| ------------------ | -------------------------- | ------------------------------------------------- |
+| `pypdf2` (default) | Included                   | Fast, good for most PDFs                          |
+| `pdfminer`         | `pip install pdfminer.six` | Better layout preservation, handles complex fonts |
 
 ## Verify
 
 ```powershell
-.\.venv\Scripts\python.exe -m py_compile extract_pdf.py
-.\.venv\Scripts\python.exe extract_pdf.py --help
+python -m py_compile extract_pdf.py
+extract-pdf --help
 ```
 
 Keep source PDFs and generated output outside Git unless they are explicitly safe to share.
